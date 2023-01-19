@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import data from '../assets/data'
+import data from './data'
 import './App.css'
 import Pad from './components/Pad'
 
