@@ -8,7 +8,7 @@ const colors = {
   'kick': 'orange'
 }
 
-const src='../../assets/sounds/'
+const src='assets/sounds/'
 
 function Pad({padData}){
 
