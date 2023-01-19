@@ -12,10 +12,9 @@ const src='assets/sounds/'
 
 function Pad({padData}){
 
-  const audio = new Audio(`${src}${padData.name}.webm`)
 
   function playSound(){
-    audio.pause()
+    const audio = new Audio(`${src}${padData.name}.webm`)
     audio.play()
   }
 
