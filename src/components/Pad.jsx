@@ -15,6 +15,7 @@ function Pad({padData}){
   const audio = new Audio(`${src}${padData.name}.webm`)
 
   function playSound(){
+    audio.pause()
     audio.play()
   }
 
