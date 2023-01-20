@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+
 
 const colors = {
   'clap': 'cyan',
@@ -10,19 +12,32 @@ const colors = {
 
 const src='assets/sounds/'
 
-function Pad({padData}){
+function Pad({padData, audioContext, loadFile}){
 
+  const [sound, setSound] = useState(null)
+
+  // const audio = new Audio(`${src}${padData.name}.webm`)
 
   function playSound(){
-    const audio = new Audio(`${src}${padData.name}.webm`)
-    audio.play()
+    const trackSource = new AudioBufferSourceNode(audioContext, {
+      buffer: sound,
+    });
+
+    trackSource.connect(audioContext.destination);
+    trackSource.start();
+    return trackSource;
   }
+
+  useEffect(() => {
+    loadFile(`${src}${padData.name}.webm`)
+    .then((track) => setSound(track))
+  }, [])
 
 
   return(
-    <div className='pad' style={{backgroundColor: colors[padData.type]}} onClick={playSound}>
-      <p>{padData.type}</p>
-    </div>
+      <div className='pad' style={{backgroundColor: colors[padData.type]}} onClick={playSound}>
+        <p>{padData.type}</p>
+      </div>
   )
 }
 
