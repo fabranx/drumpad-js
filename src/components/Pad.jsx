@@ -16,7 +16,6 @@ function Pad({padData, audioContext, loadFile}){
 
   const [sound, setSound] = useState(null)
 
-  // const audio = new Audio(`${src}${padData.name}.webm`)
 
   function playSound(){
     const trackSource = new AudioBufferSourceNode(audioContext, {

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import data from './data'
 import './App.css'
 import Pad from './components/Pad'
+import Controls from './components/Controls'
 
 
 function App() {
@@ -20,7 +21,6 @@ function App() {
     return audioBuffer;
   }
 
-
   return (
     <div className='App'>
       <div className='drumpad'>
@@ -30,7 +30,7 @@ function App() {
           )}
         </div>
       </div>
-      <div className='controls'></div>
+      <Controls />
     </div>
   )
 }
