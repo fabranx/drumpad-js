@@ -12,7 +12,7 @@ const colors = {
 
 const src='assets/sounds/'
 
-function Pad({padData, audioContext, loadFile}){
+function Pad({padData, audioContext, loadFile, mediaDest}){
 
   const [sound, setSound] = useState(null)
 
@@ -24,8 +24,12 @@ function Pad({padData, audioContext, loadFile}){
 
     trackSource.connect(audioContext.destination);
     trackSource.start();
+
+    trackSource.connect(mediaDest)
+    
     return trackSource;
   }
+
 
   useEffect(() => {
     loadFile(`${src}${padData.name}.webm`)

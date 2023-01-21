@@ -7,7 +7,11 @@ import Controls from './components/Controls'
 
 function App() {
 
-  let audioCtx = new AudioContext()
+  const audioCtx = new AudioContext()
+
+  const mediaStreamDestination = audioCtx.createMediaStreamDestination();
+
+  const mediaRecorder = new MediaRecorder(mediaStreamDestination.stream)
 
   async function loadFile(filePath) {
     const track = await getFile(filePath);
@@ -26,11 +30,11 @@ function App() {
       <div className='drumpad'>
         <div className='pads-container'>
           {data.map(pad => 
-            <Pad key={pad.name} padData={pad} audioContext={audioCtx} loadFile={loadFile}/>
+            <Pad key={pad.name} padData={pad} audioContext={audioCtx} loadFile={loadFile} mediaDest={mediaStreamDestination}/>
           )}
         </div>
       </div>
-      <Controls />
+      <Controls mediaRecorder={mediaRecorder}/>
     </div>
   )
 }
