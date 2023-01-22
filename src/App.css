@@ -10,21 +10,18 @@ body {
 }
 
 .App{
-  margin: 20px auto;
+  margin: 50px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-content: center; */
-  /* border: 1px solid red; */
   gap: 20px;
   overflow: hidden;
 }
 
 .drumpad{
-  width: 50%;
+  width: 70%;
   min-width: 320px;
-  /* border: 1px solid green; */
-  max-width: 460px;
+  max-width: 600px;
 }
 
 .drumpad::after{
@@ -46,13 +43,12 @@ body {
 .pad{
   width: 90%;
   height: 90%;
-  /* border: 1px solid white; */
   border-radius: 5px;
-  background-color: cornflowerblue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 .pad > p{
   position: absolute;
@@ -63,9 +59,8 @@ body {
 .controls{
   min-width: 250px;
   max-width: 300px;
-  width: 30%;
+  width: 35%;
   height: 150px;
-  /* border: 1px solid yellow; */
   background-color: slategrey;
 
   display: flex;

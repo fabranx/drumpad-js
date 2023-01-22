@@ -25,9 +25,7 @@ function Pad({padData, audioContext, loadFile, mediaDest}){
     trackSource.connect(audioContext.destination);
     trackSource.start();
 
-    trackSource.connect(mediaDest)
-    
-    return trackSource;
+    trackSource.connect(mediaDest) // for recording
   }
 
 
