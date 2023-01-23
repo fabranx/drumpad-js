@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 function Controls({mediaRecorder}){
 
@@ -6,6 +6,10 @@ function Controls({mediaRecorder}){
   const [canPlayRecord, setCanPlayRecord] = useState(false)
   const [audioSource, setAudioSource] = useState(null)
   const [isRecording, setIsRecording] = useState(false)
+  const [playBackRate, setPlayBackRate] = useState(1)
+
+  const audioEl = useRef(null)
+
 
   const chunks = [];
 
@@ -41,6 +45,13 @@ function Controls({mediaRecorder}){
     setCanPlayRecord(false)
   }
 
+
+  function changeAudioSpeed(e){
+    let speed = e.target.value
+    audioEl.current.playbackRate = speed
+    setPlayBackRate(speed) 
+  }
+
   return(
     <div className="controls">
       <div className="controls-wrapper">
@@ -50,7 +61,7 @@ function Controls({mediaRecorder}){
           onClick={startRecording}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" fill="currentColor" /><path fillRule="evenodd" clipRule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" fill="currentColor" /></svg>
         </button>
-        
+
         <button id='stop' 
           disabled={canRecord} 
           className={!canRecord ? 'controls-button enabled' : 'controls-button disabled'} 
@@ -66,9 +77,22 @@ function Controls({mediaRecorder}){
         </button>
       </div>
       {canPlayRecord ? 
-        <audio controls src={audioSource}></audio> 
+        <>
+          <span className="controls-slider">
+            <input type={"range"} list="values" min={0.5} max={3} defaultValue={1} step={0.5} onChange={changeAudioSpeed}></input>
+            <datalist id="values">
+              <option value={0.5} label={"0.5x"}></option>
+              <option value={1} label={"1x"}></option>
+              <option value={1.5} label={"1.5x"}></option>
+              <option value={2} label={"2x"}></option>
+              <option value={2.5} label={"2.5x"}></option>
+              <option value={3} label={"3x"}></option>
+            </datalist>
+          </span>
+          <audio ref={audioEl} controls src={audioSource}></audio>
+        </>
         :
-        <p>
+        <p style={isRecording ? {color: "red"} : {color:"white"}}>
          {isRecording ? "recording..." : "no record yet"}  
         </p>
       }
