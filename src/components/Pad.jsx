@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 
 
 const colors = {
-  'clap': 'cyan',
-  'hi-hat': 'yellow',
-  'cowbell': 'purple',
-  'crash': 'green',
-  'low': 'blue',
-  'kick': 'orange'
+  'clap': '#4dd8ef',
+  'hi-hat': '#f6c94f',
+  'cowbell': '#da6604',
+  'crash': '#4dcd43',
+  'low': '#9f32a4',
+  'kick': '#3d8acf'
 }
 
 const src='assets/sounds/'

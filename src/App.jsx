@@ -26,16 +26,19 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <div className='drumpad'>
-        <div className='pads-container'>
-          {data.map(pad => 
-            <Pad key={pad.name} padData={pad} audioContext={audioCtx} loadFile={loadFile} mediaDest={mediaStreamDestination}/>
-          )}
+    <>
+      <h2 className='title'>Drumpad JS</h2>
+      <div className='App'>
+        <div className='drumpad'>
+          <div className='pads-container'>
+            {data.map(pad => 
+              <Pad key={pad.name} padData={pad} audioContext={audioCtx} loadFile={loadFile} mediaDest={mediaStreamDestination}/>
+            )}
+          </div>
         </div>
+        <Controls mediaRecorder={mediaRecorder}/>
       </div>
-      <Controls mediaRecorder={mediaRecorder}/>
-    </div>
+    </>
   )
 }
 
