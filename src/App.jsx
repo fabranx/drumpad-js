@@ -38,11 +38,12 @@ function App() {
         </div>
         <Controls mediaRecorder={mediaRecorder}/>
       </div>
-      <a style={{display:'flex', justifyContent:'center', marginTop:'60px'}}
-        href='https://github.com/fabranx/drumpad-js'
-        >
-          Source Code
-      </a>
+      <span style={{display:'flex', justifyContent:'center', marginTop:'60px'}}>
+        <a href='https://github.com/fabranx/drumpad-js'
+          >
+            Source Code
+        </a>
+      </span>
     </>
   )
 }
